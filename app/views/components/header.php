@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student System</title>
+    <title><?= isset($_GET['action']) ? ucfirst($_GET['action']) . ' | ' : '' ?>StudSyst.os</title>
+    
+    <link rel="icon" href="icon/icon.svg?v=1" type="image/svg+xml">
+    <link rel="alternate icon" href="icon/icon.png?v=1" type="image/png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="flex flex-col min-h-screen bg-slate-50">   
+<body class="flex flex-col min-h-screen bg-slate-50 text-slate-900">   
     <?php 
+        // Logic to handle active states accurately
         $current_action = $_GET['action'] ?? 'home'; 
     ?>
 
@@ -25,24 +30,24 @@
                 <div class="absolute left-1/2 -translate-x-1/2 flex space-x-1 bg-slate-900/5 p-1 rounded-xl">
                     <a href="index.php" 
                        class="px-4 py-1.5 text-xs font-bold rounded-lg transition-all tracking-wider uppercase
-                       <?= !isset($_GET['action']) ? 'bg-white text-red-600 shadow-sm' : 'text-slate-500 hover:text-red-600' ?>">
+                       <?= ($current_action === 'home') ? 'bg-white text-red-600 shadow-sm' : 'text-slate-500 hover:text-red-600' ?>">
                         Home
                     </a>
                     <a href="index.php?action=add" 
                        class="px-4 py-1.5 text-xs font-bold rounded-lg transition-all tracking-wider uppercase
-                       <?= ($current_action == 'add') ? 'bg-white text-red-600 shadow-sm' : 'text-slate-500 hover:text-red-600' ?>">
+                       <?= ($current_action === 'add') ? 'bg-white text-red-600 shadow-sm' : 'text-slate-500 hover:text-red-600' ?>">
                         Add
                     </a>
                     <a href="index.php?action=list" 
                        class="px-4 py-1.5 text-xs font-bold rounded-lg transition-all tracking-wider uppercase
-                       <?= ($current_action == 'list') ? 'bg-white text-red-600 shadow-sm' : 'text-slate-500 hover:text-red-600' ?>">
+                       <?= ($current_action === 'list') ? 'bg-white text-red-600 shadow-sm' : 'text-slate-500 hover:text-red-600' ?>">
                         List
                     </a>
                 </div>
 
                 <div class="flex items-center">
                     <a href="https://github.com/KareruRei/Student-Management-System" target="_blank" 
-                       class="group p-2 transition-all">
+                       class="group p-2 transition-all" title="View on GitHub">
                         <svg class="w-6 h-6 text-slate-400 group-hover:text-red-600 transition-colors duration-300" 
                              viewBox="0 0 24 24" 
                              fill="currentColor" 
@@ -56,6 +61,6 @@
         </nav>
     </header>
 
-    <div class="h-24"></div>
+    <div class="h-20"></div>
 
     <main class="flex-grow">
