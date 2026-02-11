@@ -12,7 +12,6 @@
 </head>
 <body class="flex flex-col min-h-screen bg-slate-50 text-slate-900">   
     <?php 
-        // Logic to handle active states accurately
         $current_action = $_GET['action'] ?? 'home'; 
     ?>
 
